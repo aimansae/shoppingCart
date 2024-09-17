@@ -2,32 +2,25 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Icon from "../public/assets/images/icon-add-to-cart.svg";
-import incrementIcon from "../public/assets/images/icon-increment-quantity.svg";
-import decrementIcon from "../public/assets/images/icon-decrement-quantity.svg";
-
-type AddToCartProps = {
-  onUpdateCart: (change: number) => void;
+import Icon from "../../public/assets/images/icon-add-to-cart.svg";
+import incrementIcon from "../../public/assets/images/icon-increment-quantity.svg";
+import decrementIcon from "../../public/assets/images/icon-decrement-quantity.svg";
+import { DataType } from "../data";
+type Props = {
+  id: number;
+  product: DataType;
+  count: number;
+  onIncrement: (product: DataType) => void;
+  onDecrement: (product: DataType) => void;
 };
 
-const AddToCart = ({ onUpdateCart }: AddToCartProps) => {
+const AddToCartButton = ({
+  count,
+  product,
+  onIncrement,
+  onDecrement,
+}: Props) => {
   const [isCartClicked, setIsCartClicked] = useState(false);
-  const [count, setCount] = useState(1);
-
-  const increment = () => {
-    setCount((prevCount) => {
-      const newCount = prevCount + 1;
-      onUpdateCart(1);
-      return newCount;
-    });
-  };
-  const decrement = () => {
-    setCount((prevCount) => {
-      const newCount = prevCount - 1;
-      onUpdateCart(newCount);
-      return newCount;
-    });
-  };
 
   return (
     <div>
@@ -50,7 +43,7 @@ const AddToCart = ({ onUpdateCart }: AddToCartProps) => {
       ) : (
         <div className=" relative top-[-20px] flex flex-row items-center bg-customRed gap-4 py-[10px] px-[20px] text-white  rounded-xl ">
           <button
-            onClick={decrement}
+            onClick={() => onDecrement(product)}
             disabled={count === 0}
             className="flex items-center border rounded-full px-[4px] py-[7px]"
           >
@@ -63,13 +56,13 @@ const AddToCart = ({ onUpdateCart }: AddToCartProps) => {
           </button>
           <span className="text-xs font-semibold">{count}</span>
           <button
-            onClick={increment}
+            onClick={() => onIncrement(product)}
             className="flex items-center border rounded-full p-1" // Adjust padding for consistency
           >
             <Image
               src={incrementIcon}
               alt="Increment icon"
-              width={8} // Same size as the decrement icon
+              width={8}
               height={8}
             />
           </button>
@@ -78,4 +71,4 @@ const AddToCart = ({ onUpdateCart }: AddToCartProps) => {
     </div>
   );
 };
-export default AddToCart;
+export default AddToCartButton;

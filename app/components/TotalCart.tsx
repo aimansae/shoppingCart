@@ -1,51 +1,70 @@
 "use client";
 import React, { useState } from "react";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from "@/components/ui/card";
-import Image from "next/image";
-import AddToCart from "./AddToCart";
-import { data } from "../data";
-import ImageW from "../public/assets/images/image-baklava-mobile.jpg";
-const TotalCart = () => {
-  const [totalCount, setTotalCount] = useState(0);
+import { data, DataType } from "../data";
+import ProductCart from "./ProductCart";
 
-  const handleUpdateCart = (change: number) => {
-    setTotalCount((prevTotal) => prevTotal + change);
+const TotalCart = () => {
+  const [cart, setCart] = useState<{
+    [key: number]: { product: DataType; quantity: number };
+  }>({});
+  const [cartTotal, setCartTotal] = useState(0);
+  const [clickedProductId, setClickedProductId] = useState<number | null>(null); // Track clicked product
+
+  const handleIncrement = (product: DataType) => {
+    setCart((prevCart) => {
+      const updatedCart = { ...prevCart };
+      if (updatedCart[product.id]) {
+        updatedCart[product.id].quantity += 1;
+      } else {
+        updatedCart[product.id] = { product, quantity: 1 };
+      }
+      console.log("Updated cart after increment:", updatedCart);
+      return updatedCart;
+    });
+
+    setCartTotal((prevCartTotal) => prevCartTotal + product.price);
   };
+
+  const handleDecrement = (product: DataType) => {
+    setCart((prevCart) => {
+      const updatedCart = { ...prevCart };
+      if (updatedCart[product.id]) {
+        if (updatedCart[product.id].quantity > 1) {
+          // Decrement quantity if more than 1
+          updatedCart[product.id].quantity -= 1;
+        } else {
+          // Remove product if quantity is 1
+          delete updatedCart[product.id];
+        }
+      }
+      return updatedCart;
+    });
+
+    setCartTotal((prevCartTotal) => {
+      const productPrice = product.price;
+      return prevCartTotal - productPrice;
+    });
+  };
+  const totalItems = Object.values(cart).reduce(
+    (sum, item) => sum + item.quantity,
+    0
+  );
 
   return (
     <div>
-      {data.map((d) => (
-        <Card key={d.id} className="border-transparent">
-          <div className="flex flex-col items-center">
-            <Image
-              alt={d.name}
-              src={ImageW}
-              height={500}
-              width={500}
-              className="rounded-md  "
-            />
-            <AddToCart onUpdateCart={handleUpdateCart} />
-          </div>
-          <CardHeader>
-            <CardDescription>{d.category} </CardDescription>
-            <CardTitle>{d.name}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="mt-2 text-customRed text-xs">
-              $ {d.price.toFixed(2)}
-            </p>
-          </CardContent>
-        </Card>
+      {data.map((product) => (
+        <ProductCart
+          key={product.id}
+          product={product}
+          count={cart[product.id]?.quantity || 0}
+          onIncrement={handleIncrement}
+          onDecrement={handleDecrement}
+        />
       ))}
       <div>
-        <p>Your cart Total ({totalCount})</p>
-      </div>{" "}
+        <p>Total items: {totalItems}</p>
+        <p>Your cart total: ${cartTotal.toFixed(2)}</p>
+      </div>
     </div>
   );
 };
