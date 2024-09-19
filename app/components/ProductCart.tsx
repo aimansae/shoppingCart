@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Card,
   CardHeader,
@@ -10,10 +9,11 @@ import Image from "next/image";
 import AddToCartButton from "./AddToCartButton";
 // import ImageW from "../public/assets/images/image-baklava-mobile.jpg";
 import { DataType } from "../data";
+import { useState } from "react";
 type ProductCardType = {
   product: DataType;
   count: number;
-  onIncrement: (product: DataType) => void;
+  onIncrement: () => void;
   onDecrement: (product: DataType) => void;
 };
 const CartItem = ({
@@ -22,23 +22,37 @@ const CartItem = ({
   onIncrement,
   onDecrement,
 }: ProductCardType) => {
+  const [isCartClicked, setIsCartClicked] = useState(false);
+
+  const handleCartClick = (clicked: boolean) => {
+    setIsCartClicked(clicked);
+  };
   return (
     <>
-      <Card key={product.id} className="">
+      <Card key={product.id}>
         <div className="flex flex-col items-center">
-          <Image
-            alt={product.name}
-            src={product.image.mobile}
-            height={500}
-            width={500}
-            className={`rounded-md ${""}`}
-          />
+          <div
+            className={`${
+              isCartClicked
+                ? " border border-customRed rounded-md"
+                : "relative inline-block border rounded-md border-gray-300"
+            }`}
+          >
+            <Image
+              alt={product.name}
+              src={product.image.mobile}
+              height={500}
+              width={500}
+              className="rounded-md"
+            />
+          </div>
           <AddToCartButton
             product={product}
             id={product.id}
-            onIncrement={() => onIncrement(product)}
+            onIncrement={onIncrement}
             onDecrement={onDecrement}
             count={count}
+            onCartClick={handleCartClick}
           />
         </div>
         <CardHeader>
@@ -46,7 +60,7 @@ const CartItem = ({
           <CardTitle>{product.name}</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="mt-2 text-customRed text-xs">
+          <p className="my-2 text-customRed text-xs">
             $ {product.price.toFixed(2)}
           </p>
         </CardContent>
