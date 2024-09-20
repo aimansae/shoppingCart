@@ -7,16 +7,17 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import AddToCartButton from "./AddToCartButton";
-// import ImageW from "../public/assets/images/image-baklava-mobile.jpg";
 import { DataType } from "../data";
 import { useState } from "react";
+
 type ProductCardType = {
   product: DataType;
   count: number;
   onIncrement: () => void;
   onDecrement: (product: DataType) => void;
 };
-const CartItem = ({
+
+const Products = ({
   product,
   count,
   onIncrement,
@@ -69,4 +70,4 @@ const CartItem = ({
   );
 };
 
-export default CartItem;
+export default Products;
