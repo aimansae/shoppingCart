@@ -58,7 +58,7 @@ const Modal = ({ isOpen, onClose, cart, cartTotal }: ModalProps) => {
                           <span className="text-customRed font-semibold mr-1">
                             {item.quantity}x
                           </span>
-                          <span>@ ${cartTotal.toFixed(2)}</span>
+                          <span>@ ${item.product.price.toFixed(2)}</span>
                         </div>
                       </div>
                       <span className="text-black font-semibold text-right">
@@ -66,16 +66,16 @@ const Modal = ({ isOpen, onClose, cart, cartTotal }: ModalProps) => {
                       </span>
                     </div>
                   </li>
-                  <div className="flex my-6 items-center justify-between w-full">
-                    <p className="text-base">Order Total:</p>
-                    <span className="text-black text-xl font-bold">
-                      ${cartTotal.toFixed(2)}
-                    </span>
-                  </div>
                 </>
               );
             })}
           </ul>
+          <div className="flex my-6 items-center justify-between w-full">
+            <span className="text-black text-xl font-bold">Total order:</span>
+            <span className="text-black text-xl font-bold">
+              ${cartTotal.toFixed(2)}
+            </span>
+          </div>
         </CardContent>
         <CardFooter className="text-xs flex flex-col mt-4 mx-4 rounded justify-center">
           <button
