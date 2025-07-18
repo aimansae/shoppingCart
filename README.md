@@ -1,7 +1,8 @@
 # Simple Cart Page
- 
+
 This is a responsive **shopping cart page** inspired by [Frontend Mentor](https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d) made with NextJs, Typescript
 
+![App Preview](/public/assets/images/amIResponsive.PNG)
 Here is my [GiHub Repo](https://github.com/aimansae/shoppingCart)
 and the [Deployed version](https://shopping-cart-one-tau.vercel.app/)
 
@@ -35,8 +36,6 @@ To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
