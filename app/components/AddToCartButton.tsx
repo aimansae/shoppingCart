@@ -29,9 +29,9 @@ const AddToCartButton = ({
     onCartClick(newState); // Notify parent of the click state
   };
   return (
-    <div className="min-h-max">
+<div className="w-full flex justify-center items-center  ">
       {!isCartClicked ? (
-        <div className=" relative top-[-20px] flex flex-row items-center">
+        <div className="relative top-[-20px] inset-0 flex flex-row items-center">
           <button
             onClick={handleCartClick}
             className="hover:text-customRed flex items-center w-[128px] h-[35px] justify-center  rounded-2xl bg-white border border-gray-400 "
@@ -43,7 +43,7 @@ const AddToCartButton = ({
               width={14}
               height={14}
             />
-            <p className="text-xs font-semibold ">Add to Cart</p>
+            <span className="text-xs font-semibold ">Add to Cart</span>
           </button>
         </div>
       ) : (

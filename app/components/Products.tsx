@@ -29,22 +29,22 @@ const Products = ({
     setIsCartClicked(clicked);
   };
   return (
-    <>
-      <Card key={product.id}>
-        <div className="flex flex-col items-center">
+    <div className=" w-full">
+      <Card key={product.id} className="bg-white p-4">
+        <div>
           <div
             className={`${
               isCartClicked
                 ? " border border-customRed rounded-md"
-                : "relative inline-block border rounded-md border-gray-300"
-            }`}
+                : "  border rounded-md border-gray-300"
+            }  `}
           >
             <Image
               alt={product.name}
               src={product.image.mobile}
-              height={500}
-              width={500}
-              className="rounded-md"
+              width={300}
+              height={200}
+              className="w-full md:w-full h-auto rounded-md object-cover"
             />
           </div>
           <AddToCartButton
@@ -56,17 +56,17 @@ const Products = ({
             onCartClick={handleCartClick}
           />
         </div>
-        <CardHeader>
+        <CardHeader className=" p-2">
           <CardDescription>{product.category} </CardDescription>
           <CardTitle>{product.name}</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="my-2 text-customRed text-xs">
+          <p className="p-2 text-customRed text-xs">
             $ {product.price.toFixed(2)}
           </p>
         </CardContent>
       </Card>
-    </>
+    </div>
   );
 };
 

@@ -82,7 +82,7 @@ const Modal = ({ isOpen, onClose, cart, cartTotal }: ModalProps) => {
             onClick={onClose}
             className="my-4 w-full text-base font-semibold text-white bg-customRed rounded-full px-4 py-2 hover:bg-red-600 transition duration-200"
           >
-            Start New Order
+            Return
           </button>
         </CardFooter>
       </Card>

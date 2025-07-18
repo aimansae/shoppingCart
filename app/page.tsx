@@ -2,10 +2,10 @@ import Order from "./components/Order";
 
 export default function page() {
   return (
-    <section className="container flex mx-auto p-4 bg-background">
-      <div className=" flex-row">
-        <h1 className="text-2xl font-bold m-4">Desserts</h1>
-        <Order></Order>
+    <section className="gap-2 container flex flex-col mx-auto p-4 md:p-0 bg-background">
+      <h1 className="text-2xl font-bold">Desserts</h1>
+      <div className="flex-1">
+        <Order />
       </div>
     </section>
   );

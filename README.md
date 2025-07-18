@@ -1,29 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-It's a shopping cart inspired by [Frontend Mentor](https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d) made with NextJs, Typescript
+# Simple Cart Page
+ 
+This is a responsive **shopping cart page** inspired by [Frontend Mentor](https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d) made with NextJs, Typescript
 
 Here is my [GiHub Repo](https://github.com/aimansae/shoppingCart)
 and the [Deployed version](https://shopping-cart-one-tau.vercel.app/)
 
+## Features
+
+- Add/remove items to/from cart
+- Dynamic cart total calculation
+- Item quantity increment/decrement
+- Delete individual cart items
+- Modal confirmation upon placing order
+- Responsive layout using CSS Grid and Flexbox
+
+
+## Technologies Used
+React – UI library
+Next.js – Framework for React apps
+Tailwind CSS – Utility-first CSS
+TypeScript – Typed JavaScript
+
 ## Getting Started
 
-First, run the development server:
-
-```bash
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open http://localhost:3000 to view the app.
 
 ## Learn More
 
@@ -39,3 +43,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## TODO
+- Add persistent cart using localStorage
+- Add api for retrieving products and database
+- Add product filtering by category
+- Add user authentication for checkout
+
+ ## Credits
+ Frontend mentor

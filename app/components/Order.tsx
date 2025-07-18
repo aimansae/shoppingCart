@@ -74,10 +74,9 @@ const Order = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4">
-      <div className="md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="grid md:[grid-template-columns:1fr_300px] gap-4">
+      <div className="gap-2 grid grid-cols-1 md:grid-cols-2 md:gird-cols-[1fr] w-full ">
         {/* Products Summary */}
-
         {data.map((product) => (
           <Products
             key={product.id}
@@ -99,7 +98,6 @@ const Order = () => {
           setShowModal(true);
         }}
       />
-      {/* Modal */}
 
       {showModal && (
         <Modal
